@@ -1,0 +1,27 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #121212;
+  color: white;
+  margin-top: 40px;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: repeat(6, 60px);
+  gap: 5px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.symbol {
+  width: 60px;
+  height: 60px;
+  background: #2a2a2a;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 2px solid #444;
+}
