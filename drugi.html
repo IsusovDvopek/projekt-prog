@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zodijački Karusel (HTML + CSS)</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #000;
+      color: white;
+      overflow-x: hidden;
+    }
+    header {
+      background: #222;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    .dropdown {
+      position: relative;
+    }
+    .dropdown button {
+      background: #333;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: #444;
+      border-radius: 5px;
+      overflow: hidden;
+      min-width: 160px;
+    }
+    .dropdown-content a {
+      color: white;
+      padding: 10px 15px;
+      display: block;
+      text-decoration: none;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .section {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 100px;
+    }
+    .section:target {
+      display: flex;
+    }
+    .carousel-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .carousel-nav label {
+      background: #333;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input[type="radio"] {
+      display: none;
+    }
+    .card {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .card img {
+      width: 120px;
+      height: 120px;
+    }
+    .description {
+      margin-top: 10px;
+      max-width: 400px;
+    }
+    #ovan:checked ~ .cards .ovan,
+    #bik:checked ~ .cards .bik,
+    #blizanci:checked ~ .cards .blizanci,
+    #rak:checked ~ .cards .rak,
+    #lav:checked ~ .cards .lav,
+    #djevica:checked ~ .cards .djevica,
+    #vaga:checked ~ .cards .vaga,
+    #skorpija:checked ~ .cards .skorpija,
+    #strijelac:checked ~ .cards .strijelac,
+    #jarac:checked ~ .cards .jarac,
+    #vodenjak:checked ~ .cards .vodenjak,
+    #ribe:checked ~ .cards .ribe {
+      display: flex;
+    }
+    .my-sign select {
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      background: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    .starry-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      z-index: -1;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="starry-background">
+    <div class="star" style="width:2px;height:2px;top:10%;left:20%;"></div>
+    <div class="star" style="width:1.5px;height:1.5px;top:30%;left:50%;"></div>
+  </div>
+
+  <header>
+    <div class="title">Zodijak</div>
+    <div class="dropdown">
+      <button>☰ Izbornik</button>
+      <div class="dropdown-content">
+        <a href="#pocetna">🏠 Početna</a>
+        <a href="#moj-znak">🔮 Moj znak</a>
+      </div>
+    </div>
+  </header>
+
+  <div id="pocetna" class="section">
+    <input type="radio" name="sign" id="ovan" checked>
+    <input type="radio" name="sign" id="bik">
+    <input type="radio" name="sign" id="blizanci">
+    <input type="radio" name="sign" id="rak">
+    <input type="radio" name="sign" id="lav">
+    <input type="radio" name="sign" id="djevica">
+    <input type="radio" name="sign" id="vaga">
+    <input type="radio" name="sign" id="skorpija">
+    <input type="radio" name="sign" id="strijelac">
+    <input type="radio" name="sign" id="jarac">
+    <input type="radio" name="sign" id="vodenjak">
+    <input type="radio" name="sign" id="ribe">
+
+    <div class="carousel-nav">
+      <label for="ovan">Ovan</label>
+      <label for="bik">Bik</label>
+      <label for="blizanci">Blizanci</label>
+      <label for="rak">Rak</label>
+      <label for="lav">Lav</label>
+      <label for="djevica">Djevica</label>
+      <label for="vaga">Vaga</label>
+      <label for="skorpija">Škorpija</label>
+      <label for="strijelac">Strijelac</label>
+      <label for="jarac">Jarac</label>
+      <label for="vodenjak">Vodenjak</label>
+      <label for="ribe">Ribe</label>
+    </div>
+
+    <div class="cards">
+      <div class="card ovan"><img src="znak/ovan.png"><div class="description"><strong>Znak:</strong> vođa<br><strong>Podznak:</strong> impulzivan, hrabar</div></div>
+      <div class="card bik"><img src="znak/bik.png"><div class="description"><strong>Znak:</strong> stabilnost<br><strong>Podznak:</strong> miran, senzualan</div></div>
+      <div class="card blizanci"><img src="znak/blizanci.png"><div class="description"><strong>Znak:</strong> komunikacija<br><strong>Podznak:</strong> znatiželjan, brz</div></div>
+      <div class="card rak"><img src="znak/rak.png"><div class="description"><strong>Znak:</strong> osjećajnost<br><strong>Podznak:</strong> emotivan, brižan</div></div>
+      <div class="card lav"><img src="znak/lav.png"><div class="description"><strong>Znak:</strong> ponos<br><strong>Podznak:</strong> samouvjeren, karizmatičan</div></div>
+      <div class="card djevica"><img src="znak/djevica.png"><div class="description"><strong>Znak:</strong> preciznost<br><strong>Podznak:</strong> analitičan, uredan</div></div>
+      <div class="card vaga"><img src="znak/vaga.png"><div class="description"><strong>Znak:</strong> ravnoteža<br><strong>Podznak:</strong> šarmantan, uravnotežen</div></div>
+      <div class="card skorpija"><img src="znak/skorpija.png"><div class="description"><strong>Znak:</strong> strast<br><strong>Podznak:</strong> intenzivan, tajanstven</div></div>
+      <div class="card strijelac"><img src="znak/strijelac.png"><div class="description"><strong>Znak:</strong> istraživanje<br><strong>Podznak:</strong> slobodan, vedar</div></div>
+      <div class="card jarac"><img src="znak/jarac.png"><div class="description"><strong>Znak:</strong> ambicija<br><strong>Podznak:</strong> ozbiljan, discipliniran</div></div>
+      <div class="card vodenjak"><img src="znak/vodenjak.png"><div class="description"><strong>Znak:</strong> inovacija<br><strong>Podznak:</strong> originalan, slobodouman</div></div>
+      <div class="card ribe"><img src="znak/ribe.png"><div class="description"><strong>Znak:</strong> empatija<br><strong>Podznak:</strong> maštovit, osjetljiv</div></div>
+    </div>
+  </div>
+
+  <div id="moj-znak" class="section my-sign">
+    <h2>Odaberi svoj znak:</h2>
+    <select onchange="location.href='#' + this.value">
+      <option value="">-- Odaberi znak --</option>
+      <option value="ovan">Ovan</option>
+      <option value="bik">Bik</option>
+      <option value="blizanci">Blizanci</option>
+      <option value="rak">Rak</option>
+      <option value="lav">Lav</option>
+      <option value="djevica">Djevica</option>
+      <option value="vaga">Vaga</option>
+      <option value="skorpija">Škorpija</option>
+      <option value="strijelac">Strijelac</option>
+      <option value="jarac">Jarac</option>
+      <option value="vodenjak">Vodenjak</option>
+      <option value="ribe">Ribe</option>
+    </select>
+    <p>Odaberite znak iz liste da biste ga vidjeli na početnoj.</p>
+  </div>
+</body>
+</html>
